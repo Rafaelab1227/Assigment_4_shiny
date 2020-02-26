@@ -10,32 +10,44 @@
 library(shiny)
 library(Stat2Data)
 library(plotly)
+library(markdown)
 data("ThreeCars2017")
 data=ThreeCars2017
 
-# Define UI for application that draws a histogram
-ui <- fluidPage(
+headerPanel <- titlePanel("Three cars 2017")
+    
+sumPanel <- tabPanel("Summary",
+             fluidRow(
+                 column(6,
+                        h4("This is a dataset part of the package *Stat2Data* from R, that contains information about 90 cars from a web page in the state of Ohio.")
+                 ),
+                 column(3,
+                        img(class="img-polaroid",
+                            src="http://s3.caradvice.com.au/wp-content/uploads/2017/04/2017-toyota-yaris-v-mazda-2-comparison-41.jpg", height="100%", width="100%")))
+)
+plotPanel <- tabPanel("Price",
+                        sidebarPanel(
+                            sliderInput("Price",
+                                        "Select price range:",
+                                        min = min(data$Price),
+                                        max = max(data$Price),
+                                        value=c(min(data$Price), max(data$Price))
+                                        )
+                        ), mainPanel(
+                            h4("We can see the characteristics of the cars that were available on February 2017"),
+                            plotlyOutput("distPlot")
+                        )
+                        
+)   
+                                
 
-    # Application title
-    titlePanel("Three cars 2017"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("Price",
-                        "Select price range:",
-                        min = min(data$Price),
-                        max = max(data$Price),
-                        value=c(min(data$Price), max(data$Price)))
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotlyOutput("distPlot")
-        )
-    )
+ui <-navbarPage("Shiny App",
+                headerPanel, 
+                sumPanel,
+                plotPanel
 )
 
+                        
 # Define server logic required to draw a histogram
 server <- function(input, output) {
 
