@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <script type="application/shiny-singletons"></script>
+  <script type="application/html-dependencies">json2[2014.02.04];jquery[1.12.4];shiny[1.3.2];ionrangeslider[2.1.6];strftime[0.9.2];htmlwidgets[1.5.1];plotly-binding[4.9.1];selectize[0.11.2];bootstrap[3.3.7]</script>
+<script src="shared/json2-min.js"></script>
+<script src="shared/jquery.min.js"></script>
+<link href="shared/shiny.css" rel="stylesheet" />
+<script src="shared/shiny.min.js"></script>
+<link href="shared/ionrangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
+<link href="shared/ionrangeslider/css/ion.rangeSlider.skinShiny.css" rel="stylesheet" />
+<script src="shared/ionrangeslider/js/ion.rangeSlider.min.js"></script>
+<script src="shared/strftime/strftime-min.js"></script>
+<script src="htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="plotly-binding-4.9.1/plotly.js"></script>
+<link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+<script src="shared/selectize/js/es5-shim.min.js"></script>
+<![endif]-->
+<script src="shared/selectize/js/selectize.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="shared/bootstrap/js/bootstrap.min.js"></script>
+<script src="shared/bootstrap/shim/html5shiv.min.js"></script>
+<script src="shared/bootstrap/shim/respond.min.js"></script>  <link rel="stylesheet" type="text/css" href="shinythemes/css/cerulean.min.css"/>
+  <title>Shiny App - Three cars</title>
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand">Shiny App - Three cars</span>
+        </div>
+        <ul class="nav navbar-nav" data-tabsetid="7881">
+          <li class="active">
+            <a href="#tab-7881-1" data-toggle="tab" data-value="Summary">Summary</a>
+          </li>
+          <li>
+            <a href="#tab-7881-2" data-toggle="tab" data-value="Price">Price</a>
+          </li>
+          <li>
+            <a href="#tab-7881-3" data-toggle="tab" data-value="Model">Model</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="tab-content" data-tabsetid="7881">
+        <div class="tab-pane active" data-value="Summary" id="tab-7881-1">
+          <div class="row">
+            <div class="col-sm-6">
+              <h1>Three cars 2017 dataset</h1>
+              <h4>This is a dataset part of the package Stat2Data from R, that contains information about 90 cars from a web page in the state of Ohio.</h4>
+              <h4>The variables of the dataset are:</h4>
+              <div id="myList" class="shiny-html-output"></div>
+              <div id="tab" class="shiny-html-output"></div>
+            </div>
+            <div class="col-sm-3">
+              <img class="img-polaroid" src="http://s3.caradvice.com.au/wp-content/uploads/2017/04/2017-toyota-yaris-v-mazda-2-comparison-41.jpg" height="200%" width="200%"/>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" data-value="Price" id="tab-7881-2">
+          <div class="col-sm-4">
+            <form class="well">
+              <div class="form-group shiny-input-container">
+                <label class="control-label" for="Price">Select price range:</label>
+                <input class="js-range-slider" id="Price" data-type="double" data-min="2" data-max="27" data-from="2" data-to="27" data-step="1" data-grid="true" data-grid-num="8.33333333333333" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-drag-interval="true" data-data-type="number"/>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-8">
+            <h4>We can see the characteristics of the cars that were available on February 2017</h4>
+            <div id="distPlot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+          </div>
+        </div>
+        <div class="tab-pane" data-value="Model" id="tab-7881-3">
+          <div class="col-sm-4">
+            <form class="well">
+              <div class="form-group shiny-input-container">
+                <label class="control-label" for="Model">Select model/s:</label>
+                <div>
+                  <select id="Model" multiple="multiple"><option value="Mazda6" selected>Mazda6</option>
+<option value="Accord" selected>Accord</option>
+<option value="Maxima" selected>Maxima</option></select>
+                  <script type="application/json" data-for="Model">{}</script>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-8">
+            <h4>We can see the characteristics of the cars based on their model</h4>
+            <div id="distPlot2" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
